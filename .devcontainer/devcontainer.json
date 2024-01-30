@@ -1,0 +1,19 @@
+{
+  "name": "showyourstack-app",
+  "image": "node",
+  "runArgs": [
+    "--name",
+    "showyourstack-app"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "GitHub.copilot-chat",
+        "astro-build.astro-vscode"
+      ]
+    }
+  },
+  "postCreateCommand": "npm i",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+}
