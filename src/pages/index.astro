@@ -13,25 +13,28 @@ import Layout from "../layouts/Layout.astro";
       <form
         x-data="{email: ''}"
         @submit.prevent="pb.collection('applicants').create({email}); email = '', dialogOpen =! dialogOpen"
-        id="button"
       >
         <input type="email" x-model="email" placeholder="Enter your email" />
 
-        <input type="submit" value="🪄 Join waitlist" />
+        <input type="submit" value="🪄 Join waitlist" id="button" />
       </form>
       <div
         x-show="dialogOpen"
+        class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm transition-opacity duration-300"
+        @click="dialogOpen = !dialogOpen"
+        @click.outside="dialogOpen =! dialogOpen"
+      >
+      </div>
+      <div
+        x-show="dialogOpen"
         x-transition
-        class="flex flex-col gap-4 absolute top-0 bg-black p-12 rounded-md"
+        class="flex flex-col gap-7 absolute top-0 bg-gray-950 py-20 px-24 rounded-md"
       >
         <div>
           <h1>Success!</h1>
           <p>Your email has been submitted 🎉</p>
         </div>
-        <button
-          @click="dialogOpen =! dialogOpen"
-          @click.outside="dialogOpen =! dialogOpen">Close</button
-        >
+        <button @click="dialogOpen =! dialogOpen">Close</button>
       </div>
     </div>
   </div>
