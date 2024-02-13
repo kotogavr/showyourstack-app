@@ -21,8 +21,6 @@ import Layout from "../layouts/Layout.astro";
       <div
         x-show="dialogOpen"
         class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm transition-opacity duration-300"
-        @click="dialogOpen = !dialogOpen"
-        @click.outside="dialogOpen =! dialogOpen"
       >
       </div>
       <div
@@ -34,7 +32,10 @@ import Layout from "../layouts/Layout.astro";
           <h1>Success!</h1>
           <p>Your email has been submitted 🎉</p>
         </div>
-        <button @click="dialogOpen =! dialogOpen">Close</button>
+        <button
+          @click="dialogOpen =! dialogOpen"
+          @click.outside="dialogOpen =! dialogOpen">Close</button
+        >
       </div>
     </div>
   </div>
