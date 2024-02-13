@@ -3,9 +3,54 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <ul x-data="{tools: pb.collection('tools').getFullList()}">
-    <template x-for="tool in tools" :key="tool.id">
-      <li x-text="tool.name"></li>
-    </template>
-  </ul>
+  <div class="flex flex-col items-center text-center gap-7">
+    <h1>Reveal tech stack behind your app</h1>
+    <p class="subtext">
+      Learn tech stacks people use. It's like if we merry LibHunt and Social
+      Media
+    </p>
+    <div x-data="{dialogOpen: false}" class="relative">
+      <form
+        x-data="{email: ''}"
+        @submit.prevent="pb.collection('applicants').create({email}); email = '', dialogOpen =! dialogOpen"
+        id="button"
+      >
+        <input type="email" x-model="email" placeholder="Enter your email" />
+
+        <input type="submit" value="🪄 Join waitlist" />
+      </form>
+      <div
+        x-show="dialogOpen"
+        x-transition
+        class="flex flex-col gap-4 absolute top-0 bg-black p-12 rounded-md"
+      >
+        <div>
+          <h1>Success!</h1>
+          <p>Your email has been submitted 🎉</p>
+        </div>
+        <button
+          @click="dialogOpen =! dialogOpen"
+          @click.outside="dialogOpen =! dialogOpen">Close</button
+        >
+      </div>
+    </div>
+  </div>
 </Layout>
+<script>
+  import JSConfetti from "js-confetti";
+
+  const canvas = document.getElementById("custom_canvas");
+  const button = document.getElementById("button");
+
+  const jsConfetti = new JSConfetti({
+    canvas,
+  });
+
+  button.addEventListener("click", () => {
+    jsConfetti.addConfetti({
+      emojis: ["👩‍💻", "🧑‍💻", "🎮", "👾", "💻", "🪄"],
+      confettiRadius: 10,
+      confettiNumber: 100,
+    });
+  });
+</script>
