@@ -1,0 +1,79 @@
+---
+import { PackagePlus, CircleFadingPlus, LibrarySquare } from "lucide-astro";
+
+const components = {
+  PackagePlus,
+  CircleFadingPlus,
+  LibrarySquare,
+};
+
+const steps = [
+  {
+    title: "Create a Stack",
+    description: "Create a stack of tools that you use for a specific purpose.",
+    imageTag: "PackagePlus",
+  },
+  {
+    title: "Share your Stack",
+    description:
+      "Share your stack with the community and explain why you use each tool.",
+    imageTag: "CircleFadingPlus",
+  },
+  {
+    title: "Discover Stacks",
+    description:
+      "Discover stacks created by other developers and learn from their choices.",
+    imageTag: "LibrarySquare",
+  },
+];
+---
+
+<div class="bg-gray-950">
+  <div class="py-36 px-32 space-y-10">
+    <div class="chip inline-block">Browse and Learn</div>
+    <h2 class="">
+      What if we marry
+      <br />
+      LibHunt and Pinterest?
+    </h2>
+    <p class="subtext">
+      Imagine having access to only the tools that people use, along with the
+      reasons why they use them. You can impact this process by sharing your
+      stacks and the reasons behind your choices.
+    </p>
+
+    <div
+      class="space-y-4"
+      x-data="{ 
+      selected: 0,
+      steps: [
+        {
+          title: 'Create a Stack',
+          description: 'Create a stack of tools that you use for a specific purpose.',
+        },
+        {
+          title: 'Share your Stack',
+          description: 'Share your stack with the community and explain why you use each tool.',
+        },
+        {
+          title: 'Discover Stacks',
+          description: 'Discover stacks created by other developers and learn from their choices.',
+        },
+        ]
+      }"
+    >
+      <template x-for="(step, index) in steps" :key="index">
+        <div
+          class="cursor-pointer p-5 transition ease-in-out hover:ring hover:ring-gray-700/50 hover:rounded-md hover:ring-1"
+          :class="{ ' ring-1 ring ring-gray-700/50 rounded-md bg-gray-900': selected === index }"
+          @click="selected = index"
+        >
+          <div>
+            <p class="text-xl font-bold" x-text="step.title"></p>
+            <p class="text-gray-400 subtext" x-text="step.description"></p>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</div>
