@@ -65,12 +65,12 @@ const steps = [
       <template x-for="(step, index) in steps" :key="index">
         <div
           class="cursor-pointer p-5 transition ease-in-out hover:ring hover:ring-gray-700/50 hover:rounded-md hover:ring-1"
-          :class="{ ' ring-1 ring ring-gray-700/50 rounded-md bg-gray-900': selected === index }"
+          :class="{ 'ring-1 ring ring-gray-700/50 rounded-md bg-gray-900': selected === index }"
           @click="selected = index"
         >
           <div>
-            <p class="text-xl font-bold" x-text="step.title"></p>
-            <p class="text-gray-400 subtext" x-text="step.description"></p>
+            <p class="text-lg font-bold" x-text="step.title"></p>
+            <p class="subtext" x-text="step.description"></p>
           </div>
         </div>
       </template>
