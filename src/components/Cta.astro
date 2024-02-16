@@ -1,0 +1,71 @@
+---
+import Whitelist from "./Whitelist.astro";
+---
+
+<div class="bg-gray-950">
+  <div class="py-36 px-10 flex flex-col items-center gap-6">
+    <svg
+      width="70"
+      height="70"
+      viewBox="0 0 70 70"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="35"
+        cy="35"
+        r="34.7"
+        stroke="url(#paint0_diamond_2_74)"
+        stroke-width="0.6"></circle>
+      <path
+        d="M19 15C19 14.4477 19.4477 14 20 14H50.65C51.2023 14 51.65 14.4477 51.65 15V16.2838C51.65 16.8361 51.2023 17.2838 50.65 17.2838H20C19.4477 17.2838 19 16.836 19 16.2838V15ZM49.7736 19.1602H20.8764V20.7552C22.9405 20.7552 24.6293 22.444 24.6293 24.508H45.9269C45.9269 22.444 47.6157 20.7552 49.6797 20.7552V19.1602H49.7736ZM49.023 28.0733C49.023 26.7598 47.8971 25.6339 46.5836 25.6339H24.0664C22.7529 25.6339 21.627 26.7598 21.627 28.0733C21.627 29.3868 22.7529 30.5126 24.0664 30.5126H46.5836C47.8971 30.6065 49.023 29.4806 49.023 28.0733ZM46.3022 59.0345V32.4829H24.3478V59.0345H27.3501V35.7667C27.3501 34.9223 28.0069 34.2655 28.8513 34.2655C29.6957 34.2655 30.3524 34.9223 30.3524 35.7667V59.0345H33.9177V35.7667C33.9177 34.9223 34.5744 34.2655 35.4188 34.2655C36.2632 34.2655 36.92 34.9223 36.92 35.7667V59.0345H40.4852V35.7667C40.4852 34.9223 41.142 34.2655 41.9863 34.2655C42.8307 34.2655 43.4875 34.9223 43.4875 35.7667V59.0345H46.3022Z"
+        fill="url(#paint1_angular_2_74)"></path>
+      <defs>
+        <radialGradient
+          id="paint0_diamond_2_74"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(70 -3.01882e-05) rotate(180) scale(74.8039 194565)"
+        >
+          <stop stop-color="white" stop-opacity="0"></stop>
+          <stop offset="0.49" stop-color="white"></stop>
+          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+        </radialGradient>
+        <radialGradient
+          id="paint1_angular_2_74"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(39 47) rotate(-119.249) scale(42.9796 31.1602)"
+        >
+          <stop stop-color="white"></stop>
+          <stop offset="1" stop-color="#8A8A8A"></stop>
+        </radialGradient>
+      </defs>
+    </svg>
+
+    <h2 class="relative p-2 text-center">
+      Join whitelist
+      <span class="relative inline-block px-2">
+        <svg
+          class="absolute -bottom-1 fill-slate-400 opacity-20"
+          xmlns="http://www.w3.org/2000/svg"
+          width="100"
+          height="10"
+          viewBox="0 0 120 10"
+          aria-hidden="true"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M118.273 6.09C79.243 4.558 40.297 5.459 1.305 9.034c-1.507.13-1.742-1.521-.199-1.81C39.81-.228 79.647-1.568 118.443 4.2c1.63.233 1.377 1.943-.17 1.89Z"
+          ></path>
+        </svg>
+        <em class="inline-block text-white"> today</em>
+      </span>
+    </h2>
+    <Whitelist />
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div x-data="{dialogOpen: false}" class="relative">
+  <form
+    x-data="{email: ''}"
+    @submit.prevent="pb.collection('applicants').create({email}); email = '', dialogOpen =! dialogOpen"
+  >
+    <input type="email" x-model="email" placeholder="Enter your email" />
+
+    <input type="submit" value="🪄 Join waitlist" id="button" />
+  </form>
+  <div
+    x-show="dialogOpen"
+    class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm transition-opacity duration-300"
+  >
+  </div>
+  <div
+    x-show="dialogOpen"
+    x-transition
+    class="flex flex-col gap-7 absolute top-0 bg-gray-950 py-20 px-24 rounded-md"
+  >
+    <div>
+      <h1>Success!</h1>
+      <p>
+        You're on the waitlist. You'll receive an email one the project is in
+        beta! 🎉
+      </p>
+    </div>
+    <button
+      @click="dialogOpen =! dialogOpen"
+      @click.outside="dialogOpen =! dialogOpen">Close</button
+    >
+  </div>
+</div>
