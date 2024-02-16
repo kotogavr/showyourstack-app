@@ -1,3 +1,7 @@
+---
+import Header from "../components/Header.astro";
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,14 +12,15 @@
     <meta name="generator" content={Astro.generator} />
     <title>Hello</title>
   </head>
-  <body class="">
+  <body class="bg-gray-950">
+    <Header />
     <slot />
   </body>
 </html>
 
 <style is:global>
   p {
-    @apply text-gray-200;
+    @apply text-gray-200 antialiased;
   }
   h1 {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-gray-700 via-gray-200 to-gray-200 text-4xl md:text-6xl font-bold;
