@@ -56,23 +56,7 @@ import Footer from "../components/Footer.astro";
   <Footer />
 
   <script>
-    import JSConfetti from "js-confetti";
     import { inView, animate } from "motion";
-
-    const canvas = document.getElementById("custom_canvas");
-    const button = document.getElementById("button");
-
-    const jsConfetti = new JSConfetti({
-      canvas: canvas as HTMLCanvasElement,
-    });
-
-    button.addEventListener("click", () => {
-      jsConfetti.addConfetti({
-        emojis: ["👩‍💻", "🧑‍💻", "🎮", "👾", "💻", "🪄"],
-        confettiRadius: 10,
-        confettiNumber: 50,
-      });
-    });
 
     inView("section", ({ target }) => {
       animate(
