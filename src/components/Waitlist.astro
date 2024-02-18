@@ -1,31 +1,39 @@
 <div class="flex flex-col text-center">
-  <div x-data="{dialogOpen: false}" class="relative">
-    <form
-      x-data="{email: ''}"
-      @submit.prevent="pb.collection('applicants').create({email}); email = '', dialogOpen =! dialogOpen"
-    >
+  <div x-data="form" class="relative">
+    <form @submit.prevent="submitForm">
       <input type="email" x-model="email" placeholder="Enter your email" />
 
       <input type="submit" value="🪄 Join waitlist" id="button" />
+      <div
+        x-show="error"
+        class="fixed z-10 top-0 right-0 m-4 p-4 bg-red-500 text-white rounded shadow-lg"
+        x-text="error"
+        x-transition
+        style="display: none;"
+      >
+      </div>
     </form>
     <div
       x-show="dialogOpen"
       x-effect="dialogOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto'"
       class="fixed inset-0 backdrop-blur-sm transition-opacity duration-300"
+      style="display: none;"
     >
     </div>
-    <div x-show="dialogOpen" x-transition class="absolute bottom-0">
+    <div
+      x-show="dialogOpen"
+      x-transition
+      class="absolute bottom-0"
+      @click.outside="dialogOpen = false"
+      style="display: none;"
+    >
       <div class="border flex flex-col gap-4 bg-gray-950 py-16 rounded-md">
         <h1>Success!</h1>
         <p>
           You're on the waitlist. You'll receive an email ones the project is in
           beta! 🎉
         </p>
-        <button
-          class="mx-12"
-          @click="dialogOpen =! dialogOpen"
-          @click.outside="dialogOpen =! dialogOpen">Close</button
-        >
+        <button class="mx-12" @click="dialogOpen = false">Close</button>
       </div>
     </div>
   </div>
@@ -33,18 +41,30 @@
 
 <script>
   import JSConfetti from "js-confetti";
-  const canvas = document.getElementById("custom_canvas");
-  const button = document.getElementById("button");
 
-  const jsConfetti = new JSConfetti({
-    canvas: canvas as HTMLCanvasElement,
-  });
+  document.addEventListener("alpine:init", () => {
+    window.Alpine.data("form", () => ({
+      email: "",
+      error: "",
+      dialogOpen: false,
+      async submitForm() {
+        try {
+          await window.pb
+            .collection("applicants")
+            .create({ email: this.email });
+          this.email = "";
+          this.dialogOpen = true;
 
-  button.addEventListener("click", () => {
-    jsConfetti.addConfetti({
-      emojis: ["👩‍💻", "🧑‍💻", "🎮", "👾", "💻", "🪄"],
-      confettiRadius: 10,
-      confettiNumber: 50,
-    });
+          new JSConfetti().addConfetti({
+            emojis: ["👩‍💻", "🧑‍💻", "🎮", "👾", "💻", "🪄"],
+            confettiRadius: 10,
+            confettiNumber: 50,
+          });
+        } catch (err) {
+          this.error =
+            err.message || "An error occurred while submitting the form.";
+        }
+      },
+    }));
   });
 </script>
